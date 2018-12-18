@@ -7,8 +7,17 @@ pipeline {
       }
     }
     stage('Check_current_status') {
-      steps {
-        build 'testjob'
+      parallel {
+        stage('Check_current_status') {
+          steps {
+            build 'testjob'
+          }
+        }
+        stage('xx') {
+          steps {
+            sleep 4
+          }
+        }
       }
     }
     stage('Merge') {
