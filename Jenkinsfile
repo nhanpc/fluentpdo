@@ -1,9 +1,14 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'alpine'
+    }
+
+  }
   stages {
     stage('backup_stage') {
       steps {
-        sh 'backup.sh'
+        sh 'echo hello'
       }
     }
     stage('Check_current_status') {
